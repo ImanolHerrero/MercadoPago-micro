@@ -30,8 +30,8 @@ app.post("/create_preference", (req, res) => {
             },
         ],
         back_urls: {
-            success: "http://localhost:3000/successful-payment",
-            failure: "http://localhost:3000/failed-payment",
+            success: "https://eventox-client-2nn73s0hm-my-team-81f59105.vercel.app/successful-payment",
+            failure: "https://eventox-client-2nn73s0hm-my-team-81f59105.vercel.app/failed-payment",
             pending: "",
         },
         auto_return: "approved",
