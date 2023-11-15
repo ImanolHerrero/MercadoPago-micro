@@ -3,6 +3,8 @@ const app = express();
 const cors = require("cors");
 const mercadopago = require("mercadopago");
 
+const port = process.env.PORT || 8080; 
+
 app.use(express.json());
 app.use(cors({
     origin: '*',
@@ -11,7 +13,7 @@ app.use(cors({
 }));
 
 mercadopago.configure({
-    access_token: "TEST-367333146683112-111416-576eba2f4e6b7439cd97b8b4ead90ae2-1549810806",
+    access_token: process.env.AccessToken,
 });
 
 app.get("/", function (req, res) {
@@ -24,7 +26,7 @@ app.post("/create_preference", (req, res) => {
             {
                 title: req.body.description,
                 unit_price: Number(req.body.price),
-                quantity: Number(req.body.quantity),
+                quantity: 1,
             },
         ],
         back_urls: {
@@ -47,6 +49,6 @@ app.post("/create_preference", (req, res) => {
         });
 });
 
-app.listen(8080, () => {
+app.listen(port, () => {
     console.log("the server is now running on port 8080");
 });
